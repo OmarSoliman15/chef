@@ -16,11 +16,9 @@ class RecipesTest < ApplicationSystemTestCase
 
     fill_in "Author", with: @recipe.author
     fill_in "Category", with: @recipe.category
-    fill_in "Cock time", with: @recipe.cock_time
+    fill_in "Cook time", with: @recipe.cook_time
     fill_in "Cuisine", with: @recipe.cuisine
     fill_in "Image", with: @recipe.image
-    fill_in "Ingredients[]", with: @recipe.ingredients[]
-    fill_in "Integer", with: @recipe.integer
     fill_in "Prep time", with: @recipe.prep_time
     fill_in "Ratings", with: @recipe.ratings
     fill_in "Title", with: @recipe.title
@@ -36,11 +34,9 @@ class RecipesTest < ApplicationSystemTestCase
 
     fill_in "Author", with: @recipe.author
     fill_in "Category", with: @recipe.category
-    fill_in "Cock time", with: @recipe.cock_time
+    fill_in "Cook time", with: @recipe.cook_time
     fill_in "Cuisine", with: @recipe.cuisine
     fill_in "Image", with: @recipe.image
-    fill_in "Ingredients[]", with: @recipe.ingredients[]
-    fill_in "Integer", with: @recipe.integer
     fill_in "Prep time", with: @recipe.prep_time
     fill_in "Ratings", with: @recipe.ratings
     fill_in "Title", with: @recipe.title
