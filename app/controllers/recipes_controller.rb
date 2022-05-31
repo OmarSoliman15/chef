@@ -1,9 +1,10 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[ show edit update destroy ]
+  before_action :set_recipe, only: %i[ show ]
+  include Pagy::Backend
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @pagy, @recipes = pagy(Recipe.all)
   end
 
   # GET /recipes/1 or /recipes/1.json
