@@ -10,7 +10,7 @@ class CreateRecipes < ActiveRecord::Migration[7.0]
       t.integer :prep_time
       t.float :ratings
       t.string :title
-      t.text :ingredients[]
+      t.text :ingredients, array: true
 
       t.timestamps
     end
