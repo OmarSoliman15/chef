@@ -3,23 +3,19 @@
 one:
   author: MyString
   category: MyString
-  cock_time: MyString
-  integer: MyString
+  cook_time: 1
   cuisine: MyString
   image: MyString
   prep_time: 1
   ratings: 1.5
   title: MyString
-  ingredients[]: MyText
 
 two:
   author: MyString
   category: MyString
-  cock_time: MyString
-  integer: MyString
+  cook_time: 1
   cuisine: MyString
   image: MyString
   prep_time: 1
   ratings: 1.5
   title: MyString
-  ingredients[]: MyText

@@ -10,23 +10,13 @@
   </p>
 
   <p>
-    <strong>Cock time:</strong>
-    <%= recipe.cock_time %>
-  </p>
-
-  <p>
-    <strong>Integer:</strong>
-    <%= recipe.integer %>
-  </p>
-
-  <p>
-    <strong>Cuisine:</strong>
-    <%= recipe.cuisine %>
+    <strong>Cook time:</strong>
+    <%= recipe.cook_time %>
   </p>
 
   <p>
     <strong>Image:</strong>
-    <%= recipe.image %>
+    <img src="<%= recipe.image %>" height="100px" width="100px">
   </p>
 
   <p>
@@ -44,9 +34,10 @@
     <%= recipe.title %>
   </p>
 
-  <p>
-    <strong>Ingredients[]:</strong>
-    <%= recipe.ingredients[] %>
-  </p>
-
+    <strong>Ingredients:</strong>
+    <ul class="list-group">
+      <% recipe.ingredients.each do |ingredient| %>
+        <li><%= ingredient %></li>
+      <% end %>
+    </ul>
 </div>
