@@ -15,13 +15,8 @@
   </p>
 
   <p>
-    <strong>Cuisine:</strong>
-    <%= recipe.cuisine %>
-  </p>
-
-  <p>
     <strong>Image:</strong>
-    <%= recipe.image %>
+    <img src="<%= recipe.image %>" height="100px" width="100px">
   </p>
 
   <p>
@@ -39,4 +34,10 @@
     <%= recipe.title %>
   </p>
 
+    <strong>Ingredients:</strong>
+    <ul class="list-group">
+      <% recipe.ingredients.each do |ingredient| %>
+        <li><%= ingredient %></li>
+      <% end %>
+    </ul>
 </div>
