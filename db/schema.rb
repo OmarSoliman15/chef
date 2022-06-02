@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_31_213710) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "ingredients", default: [], array: true
+    t.index ["ingredients"], name: "index_recipes_on_ingredients", using: :gin
   end
 
 end

@@ -4,7 +4,11 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @pagy, @recipes = pagy(Recipe.all)
+    @recipes = Recipe
+
+    @recipes = RecipesHelper.filter_args(@recipes, params)
+
+    @pagy, @recipes = pagy(@recipes)
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -12,8 +16,9 @@ class RecipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-    end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 end
