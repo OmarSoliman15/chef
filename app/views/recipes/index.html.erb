@@ -1,14 +1,81 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Recipes</h1>
+<div class="container mt-3">
+  <h1>Recipes</h1>
 
-<div id="recipes">
-  <% @recipes.each do |recipe| %>
-    <%= render recipe %>
-    <p>
-      <%= link_to "Show this recipe", recipe %>
-    </p>
-  <% end %>
+  <div class="row mt-2">
+    <div class="col-xl-3">
+      <div class="card">
+        <div class="card-header">
+          Filter
+        </div>
+        <div class="card-body">
+          <form class="form-submit">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control search-input" placeholder="Recipient's ingredients" aria-label="Recipient's ingredients" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="input-group-text add-btn" type="button" id="basic-addon2">+</button>
+              </div>
+            </div>
+            <div class="search-labels">
+              <h1>
+              </h1>
+            </div>
+            <button type="button" class="btn btn-danger mt-3 showResult">Show Result</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+      <div class="row">
+        <% @recipes.each do |recipe| %>
+          <div class="col-lg-4 col-md-3">
+            <div class="card" style="height: 500px;margin-top: 10px;">
+              <img src="<%= recipe.image %>" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><%= recipe.title %></h5>
+                <p class="card-text"><%= recipe.category %> - <%= recipe.ratings %></p>
+                <%= link_to "Show this recipe", recipe %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% if @recipes.empty? %>
+          Check your spelling, try a more generic term, or less terms
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%== pagy_nav(@pagy) %>
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+
+<script>
+    var searchArray = searchArray?.length ? searchArray : []
+    $(".showResult").on("click", (e) => {
+        e.preventDefault()
+        var formData = $('.form-submit').serialize();
+        var fullUrl = window.location.href.toString().substring(window.location.href.toString().indexOf("?"), window.location.href.toString().indexOf("?").length - 1);
+        var finalUrl = fullUrl.includes("?") ? fullUrl + "&" + formData : fullUrl + "?" + formData;
+        window.history.replaceState("", "", finalUrl);
+        $(".form-submit").submit()
+    })
+    $(document).ready(function () {
+        // $('.js-example-basic-multiple').select2({
+        //     placeholder: "Select a food",
+        // allowClear: true
+        // });
+        $(".add-btn").on("click", () => {
+            var inputvalue = $(".search-input").val()
+            searchArray.push(inputvalue)
+            $(".search-labels").append(`<h3>
+
+<span class="badge badge-secondary">${inputvalue}</span>
+</h3>`)
+            $(".search-labels").append(`<input type='hidden' name="ingredients[]" value=${inputvalue} />`)
+            $(".search-input").val("")
+        })
+
+    });
+</script>
